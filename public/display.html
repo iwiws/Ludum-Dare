@@ -1,0 +1,45 @@
+<html>
+<head>
+	<title>Ludum Dare</title>
+	<style type=text/css>
+    #clone-source {
+      display: none;
+    }
+	</style>
+</head>
+<!-- Html -->
+<body>
+  <div id="top-container">
+    <div id="left-container">
+      <div id="left-menu">
+      </div>
+    </div>
+    <div id="right-container">
+      <div id="map">
+      </div>
+    </div>
+    <div id="bottom-container">
+      <div id="chat-container">
+      </div>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+(function(){
+  console.log("script initialization");
+  var socketId = 0;
+  var socket = io();
+  socket.emit('isDisplay');
+  
+  // IO listeners
+  socket.on('displayInitData', function (displayInitData) {
+    socketId = displayInitData.socketId;
+    
+  });
+  
+  console.log("script initialized");
+})(); 
+  </script>
+</body>
+</html>
